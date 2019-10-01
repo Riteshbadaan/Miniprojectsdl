@@ -31,6 +31,7 @@ import es.dmoral.toasty.Toasty;
 
 import static com.example.miniproject.Preferences.btn_language;
 import static com.example.miniproject.Preferences.btn_level;
+import static com.example.miniproject.Preferences.btn_mode;
 import static com.example.miniproject.RegisterActivity.firename;
 
 public class Navigation1 extends optionmenu implements NavigationView.OnNavigationItemSelectedListener{
@@ -73,24 +74,28 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         currentjava3= i12.getBooleanExtra("t33",false);
 
         time=findViewById(R.id.time);
-        Log.i("time",btn_level.getText().toString());
-        if(btn_level.getText().toString().equals("Easy"))
-            t=900000;
-        else if(btn_level.getText().toString().equals("Medium"))
-            t=1200000;
+        if(btn_mode.getText().toString().equals("Test"))
+        {
+            if(btn_level.getText().toString().equals("Easy"))
+                t=900000;
+            else if(btn_level.getText().toString().equals("Medium"))
+                t=1200000;
+            else
+                t=1800000;
+            new CountDownTimer(t, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    time.setText((millisUntilFinished / 60000)+":"+(millisUntilFinished % 60000 / 1000));
+                }
+
+                public void onFinish() {
+                    startActivity(new Intent(Navigation1.this,result.class));
+                }
+
+            }.start();
+        }
         else
-            t=1800000;
-        new CountDownTimer(t, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                time.setText((millisUntilFinished / 60000)+":"+(millisUntilFinished % 60000 / 1000));
-            }
-
-            public void onFinish() {
-                startActivity(new Intent(Navigation1.this,result.class));
-            }
-
-        }.start();
+            time.setText("--/--");
 
         submit=findViewById(R.id.button);
         radioGroup=findViewById(R.id.radiogroup);
@@ -228,20 +233,6 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
 
     public void insert()
     {
-        Log.i("user",currentu);
-        Log.i("user",currentp);
-        Log.i("user",currentn);
-        Log.i("user",String.valueOf(currentph));
-        Log.i("user",String.valueOf(currents));
-        Log.i("user",String.valueOf(currentc1));
-        Log.i("user",String.valueOf(currentc2));
-        Log.i("user",String.valueOf(currentc3));
-        Log.i("user",String.valueOf(currentcpp1));
-        Log.i("user",String.valueOf(currentcpp2));
-        Log.i("user",String.valueOf(currentcpp3));
-        Log.i("user",String.valueOf(currentjava1));
-        Log.i("user",String.valueOf(currentjava2));
-        Log.i("user",String.valueOf(currentjava3));
         dr12=FirebaseDatabase.getInstance().getReference().child("Users").child(firename);
         if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Easy"))
         {
