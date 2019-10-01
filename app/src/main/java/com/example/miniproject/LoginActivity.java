@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import static com.example.miniproject.RegisterActivity.firename;
 
 import es.dmoral.toasty.Toasty;
 
@@ -53,7 +54,7 @@ public class LoginActivity extends Fragment {
             @Override
             public void onClick(final View view) {
 
-                String u = user.getText().toString().trim();
+                final String u = user.getText().toString().trim();
                 String p = pass.getText().toString().trim();
 
                 if (u.isEmpty())
@@ -68,6 +69,19 @@ public class LoginActivity extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+                                    String ui="";
+                                    for(int i=0;i<u.length();i++)
+                                    {
+                                        if(u.charAt(i)=='.'||u.charAt(i)=='#')
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            ui+=u.charAt(i);
+                                        }
+                                    }
+                                    firename=ui;
                                     Toasty.success(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(view.getContext(), Preferences.class);
                                     startActivity(i);

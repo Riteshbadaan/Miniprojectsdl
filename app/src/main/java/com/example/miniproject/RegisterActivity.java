@@ -100,12 +100,20 @@ public class RegisterActivity extends Fragment {
                                     user u1 = new user(u,p,n,ph,0,false,false,false,false,false,false,false,false,false);
                                     FirebaseUser u2 = FirebaseAuth.getInstance().getCurrentUser();
                                     if(u2!=null) {
-                                        UserProfileChangeRequest p=new UserProfileChangeRequest.Builder()
-                                                .setDisplayName(n)
-                                                .build();
-                                        String uid = p.getDisplayName();
-                                        firename=uid;
-                                        mdb.child(uid).setValue(u1);
+                                        String ui="";
+                                        for(int i=0;i<u.length();i++)
+                                        {
+                                            if(u.charAt(i)=='.'||u.charAt(i)=='#')
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                ui+=u.charAt(i);
+                                            }
+                                        }
+                                        firename=ui;
+                                        mdb.child(ui).setValue(u1);
                                     }
                                     Toasty.success(getActivity(), "Registration Successful", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(view.getContext(), Preferences.class);

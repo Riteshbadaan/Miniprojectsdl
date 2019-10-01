@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,19 +44,20 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
     RadioGroup radioGroup;
     RadioButton r1,r2,r3,r4;
     int answer=0,attempans,t;
-    static int score=0,count=0;
+    static int score,perscore=0,count;
     TextView ques,sco,time;
     DatabaseReference dr,dr12;
-    String currentu,currentp,currentn;
-    int currents;
-    long currentph;
-    Boolean currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3;
+    static String currentu,currentp,currentn;
+    static int currents;
+    static long currentph;
+    static Boolean currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation1);
-
+        count=0;
+        score=0;
         Intent i12=getIntent();
 
         currentu= i12.getStringExtra("username");
@@ -117,7 +119,9 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         NavigationView navigationView =findViewById(R.id.nav_view);
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
-
+        dr12=FirebaseDatabase.getInstance().getReference().child("Users").child(firename);
+        perscore=currents;
+    insert();
         questioncome();
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -134,7 +138,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
                     answer=4;
             }
         });
-        insert();
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,12 +146,16 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
                    Log.i("count",String.valueOf(count));
                    if(count<15) {
                        score += 10;
+                       perscore+=10;
                        sco.setText(String.valueOf(score));
+                       insert();
                        Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
                        questioncome();
                    }
                    else {
                        score += 10;
+                       perscore+=10;
+                     insert();
                        sco.setText(String.valueOf(score));
                        Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
                        startActivity(new Intent(Navigation1.this, result.class));
@@ -205,9 +213,6 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         item.setChecked(true);
-
-
-        Log.i("abcd",String.valueOf(id));
         switch (id)
         {
             case R.id.myaccount:
@@ -223,6 +228,8 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
                 startActivity(new Intent(Navigation1.this,contactus.class));
                 break;
             case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(Navigation1.this,MainActivity.class));
                 break;
         }
 
@@ -233,50 +240,51 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
 
     public void insert()
     {
-        dr12=FirebaseDatabase.getInstance().getReference().child("Users").child(firename);
+        Log.i("enter","0");
         if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Easy"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,currents,true,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+            Log.i("enter","1");
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,true,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Medium"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,currents,currentc1,true,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,true,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Hard"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,currents,currentc1,currentc2,true,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,true,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Easy"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,currents,currentc1,currentc2,currentc3,true,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,true,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Medium"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,currents,currentc1,currentc2,currentc3,currentcpp1,true,currentcpp3,currentjava1,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,currentcpp1,true,currentcpp3,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Hard"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,currents,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,true,currentjava1,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,true,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("Java") && btn_level.getText().toString().equals("Easy"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,currents,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,true,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,true,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("Java") && btn_level.getText().toString().equals("Medium"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,currents,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,true,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,true,currentjava3);
             dr12.setValue(u1234);
         }
         else
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,currents,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,true);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,true);
             dr12.setValue(u1234);
         }
     }
