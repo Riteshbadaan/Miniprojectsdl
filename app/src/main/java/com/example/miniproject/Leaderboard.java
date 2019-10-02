@@ -40,6 +40,8 @@ public class Leaderboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
 
+        getSupportActionBar().setTitle("Leaderboard");
+
         uname=new String[arr.size()];
         uscore=new int[arr.size()];
         rank=new int[arr.size()];

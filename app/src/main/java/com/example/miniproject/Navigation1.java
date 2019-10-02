@@ -1,7 +1,9 @@
 package com.example.miniproject;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -11,6 +13,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,7 +45,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
     Boolean exit=false;
     static int a=1;
     Context context=Navigation1.this;
-    Button submit;
+    Button submit,submittest;
     RadioGroup radioGroup;
     RadioButton r1,r2,r3,r4;
     int answer=0,attempans,t;
@@ -112,9 +115,14 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         r3=findViewById(R.id.third);
         r4=findViewById(R.id.fourth);
         sco=findViewById(R.id.score);
+        submittest=findViewById(R.id.button1);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if(btn_mode.getText().toString().equals("Test"))
+            getSupportActionBar().setTitle("Test");
+        else
+            getSupportActionBar().setTitle("Practice");
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -189,18 +197,39 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
                             score += 10;
                             sco.setText(String.valueOf(score));
                             Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
+                            finish();
                             startActivity(new Intent(Navigation1.this, result.class));
                         }
                     } else {
                         Toasty.error(context, "Wrong answer", Toast.LENGTH_SHORT).show();
                         if (count < 15)
                             questioncome();
-                        else
+                        else {
+                            finish();
                             startActivity(new Intent(Navigation1.this, result.class));
+                        }
                     }
                 }
                }
 
+        });
+        submittest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert=new AlertDialog.Builder(Navigation1.this);
+                       alert.setTitle("Exit")
+                        .setMessage("Are you sure you want to submit the Test")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                    finish();
+                                    startActivity(new Intent(Navigation1.this,result.class));
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no,null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            }
         });
         Log.i("size",String.valueOf(count1));
     }

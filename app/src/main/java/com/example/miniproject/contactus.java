@@ -17,6 +17,7 @@ public class contactus extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactus);
 
+        getSupportActionBar().setTitle("Contact Us");
         if(getSupportActionBar()!=null)
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

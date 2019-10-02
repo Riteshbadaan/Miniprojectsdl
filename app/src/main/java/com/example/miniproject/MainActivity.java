@@ -33,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
+
+        getSupportActionBar().setTitle("Register");
         vp = findViewById(R.id.viewPager);
         ss = findViewById(R.id.switch1);
         viewPagerClass vp1 = new viewPagerClass(getSupportFragmentManager());

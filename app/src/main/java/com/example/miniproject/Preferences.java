@@ -40,6 +40,8 @@ public class Preferences extends optionmenu {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
 
+        getSupportActionBar().setTitle("Preferences");
+
         if(getSupportActionBar()!=null)
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

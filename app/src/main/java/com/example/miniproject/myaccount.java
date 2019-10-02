@@ -11,6 +11,8 @@ public class myaccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myaccount);
 
+        getSupportActionBar().setTitle("My Account");
+
         if(getSupportActionBar()!=null)
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

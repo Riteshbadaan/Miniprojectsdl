@@ -28,6 +28,8 @@ public class result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        getSupportActionBar().setTitle("Result");
+
         s1=findViewById(R.id.score1);
         attemp=findViewById(R.id.attempt);
         correct=findViewById(R.id.correct);

@@ -65,6 +65,7 @@
                     android:layout_height="match_parent">
 
                     <RadioButton
+                        android:buttonTint="@android:color/holo_orange_dark"
                         android:id="@+id/CButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -76,6 +77,7 @@
                         android:textStyle="bold" />
 
                     <RadioButton
+                        android:buttonTint="@android:color/holo_orange_dark"
                         android:id="@+id/CplusplusButton2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -86,6 +88,7 @@
                         android:textStyle="bold" />
 
                     <RadioButton
+                        android:buttonTint="@android:color/holo_orange_dark"
                         android:id="@+id/JavaButton3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -121,6 +124,7 @@
                     android:layout_height="match_parent">
 
                     <RadioButton
+                        android:buttonTint="@android:color/holo_orange_dark"
                         android:id="@+id/EasyButton4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -132,6 +136,7 @@
                         android:textStyle="bold" />
 
                     <RadioButton
+                        android:buttonTint="@android:color/holo_orange_dark"
                         android:id="@+id/MediumButton5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -142,6 +147,7 @@
                         android:textStyle="bold" />
 
                     <RadioButton
+                        android:buttonTint="@android:color/holo_orange_dark"
                         android:id="@+id/HardButton6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -172,6 +178,7 @@
                 android:textSize="28dp"
                 android:textStyle="bold" />
             <RadioGroup
+
                 android:id="@+id/radiogrp_mode"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
@@ -179,6 +186,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:buttonTint="@android:color/holo_orange_dark"
                     android:id="@+id/radioButton7"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -195,7 +203,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Test"
-
+                    android:buttonTint="@android:color/holo_orange_dark"
                     android:textColor="#fff"
                     android:textSize="20dp"
                     android:textStyle="bold" />
