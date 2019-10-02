@@ -28,7 +28,7 @@ import es.dmoral.toasty.Toasty;
 public class RegisterActivity extends Fragment {
 
     EditText user,pass, confpass, name, phone;
-    Button register;
+    Button register,reset;
     private FirebaseAuth firebaseAuth;
     static  String firename;
     private DatabaseReference mdb;
@@ -52,6 +52,7 @@ public class RegisterActivity extends Fragment {
         name = getView().findViewById(R.id.name);
         phone = getView().findViewById(R.id.phone);
         register = getView().findViewById(R.id.register);
+        reset=getView().findViewById(R.id.reset);
         firebaseAuth = FirebaseAuth.getInstance();
         mdb = FirebaseDatabase.getInstance().getReference().child("Users");
 //        private DatabaseReference mdb;
@@ -127,6 +128,16 @@ public class RegisterActivity extends Fragment {
 
                             }
                         });
+            }
+        });
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                user.setText("");
+                pass.setText("");
+                confpass.setText("");
+                name.setText("");
+                phone.setText("");
             }
         });
     }

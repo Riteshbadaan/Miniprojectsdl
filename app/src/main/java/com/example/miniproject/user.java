@@ -6,6 +6,8 @@ public class user {
     int score;
     long number;;
     boolean t11,t12,t13,t21,t22,t23,t31,t32,t33;
+    public user()
+    {}
 
     public user(String mail, String passwrd, String name, long number, int score, boolean t11, boolean t12, boolean t13, boolean t21, boolean t22, boolean t23, boolean t31, boolean t32, boolean t33) {
         this.mail = mail;

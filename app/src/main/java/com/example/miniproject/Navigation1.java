@@ -28,6 +28,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import es.dmoral.toasty.Toasty;
 
 import static com.example.miniproject.Preferences.btn_language;
@@ -44,9 +46,10 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
     RadioGroup radioGroup;
     RadioButton r1,r2,r3,r4;
     int answer=0,attempans,t;
-    static int score,perscore=0,count;
+    static int score,perscore=0,count,count1;
     TextView ques,sco,time;
-    DatabaseReference dr,dr12;
+    DatabaseReference dr,dr12,dr02;
+    static ArrayList<user>arr;
     static String currentu,currentp,currentn;
     static int currents;
     static long currentph;
@@ -57,7 +60,9 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation1);
         count=0;
+        count1=0;
         score=0;
+
         Intent i12=getIntent();
 
         currentu= i12.getStringExtra("username");
@@ -121,8 +126,11 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         navigationView.setNavigationItemSelectedListener(this);
         dr12=FirebaseDatabase.getInstance().getReference().child("Users").child(firename);
         perscore=currents;
-    insert();
+        if(btn_mode.getText().toString().equals("Test"))
+            insert();
+        cal();
         questioncome();
+
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -142,35 +150,59 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               if(answer==attempans) {
-                   Log.i("count",String.valueOf(count));
-                   if(count<15) {
-                       score += 10;
-                       perscore+=10;
-                       sco.setText(String.valueOf(score));
-                       insert();
-                       Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
-                       questioncome();
-                   }
-                   else {
-                       score += 10;
-                       perscore+=10;
-                     insert();
-                       sco.setText(String.valueOf(score));
-                       Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
-                       startActivity(new Intent(Navigation1.this, result.class));
-                   }
-                   }
-               else {
-                   Toasty.error(context, "Wrong answer", Toast.LENGTH_SHORT).show();
-                   if(count<15)
-                        questioncome();
-                   else
-                       startActivity(new Intent(Navigation1.this, result.class));
-               }
+                if(btn_mode.getText().toString().equals("Test")) {
+                    if (answer == attempans) {
+                        Log.i("count", String.valueOf(count));
+                        if (count < 15) {
+                            score += 10;
+                            perscore += 10;
+                            sco.setText(String.valueOf(score));
+                            insert();
+                            Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
+                            questioncome();
+                        } else {
+                            score += 10;
+                            perscore += 10;
+                            insert();
+                            sco.setText(String.valueOf(score));
+                            Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Navigation1.this, result.class));
+                        }
+                    } else {
+                        Toasty.error(context, "Wrong answer", Toast.LENGTH_SHORT).show();
+                        if (count < 15)
+                            questioncome();
+                        else
+                            startActivity(new Intent(Navigation1.this, result.class));
+                    }
+                }
+                else
+                {
+                    if (answer == attempans) {
+                        Log.i("count", String.valueOf(count));
+                        if (count < 15) {
+                            score += 10;
+                            sco.setText(String.valueOf(score));
+                            Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
+                            questioncome();
+                        } else {
+                            score += 10;
+                            sco.setText(String.valueOf(score));
+                            Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Navigation1.this, result.class));
+                        }
+                    } else {
+                        Toasty.error(context, "Wrong answer", Toast.LENGTH_SHORT).show();
+                        if (count < 15)
+                            questioncome();
+                        else
+                            startActivity(new Intent(Navigation1.this, result.class));
+                    }
+                }
                }
 
         });
+        Log.i("size",String.valueOf(count1));
     }
     @Override
     public void onBackPressed() {
@@ -287,6 +319,32 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
             user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,true);
             dr12.setValue(u1234);
         }
+    }
+
+    public  void cal()
+    {
+        dr02= FirebaseDatabase.getInstance().getReference().child("Users");
+        arr=new ArrayList<>();
+        dr02.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists())
+                {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        user u02=snapshot.getValue(user.class);
+                        count1++;
+                        //Log.i("score1",String.valueOf(u02.score));
+                        arr.add(u02);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 public void questioncome()
