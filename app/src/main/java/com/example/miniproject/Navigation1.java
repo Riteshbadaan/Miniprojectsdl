@@ -42,7 +42,7 @@ import static com.example.miniproject.RegisterActivity.firename;
 
 public class Navigation1 extends optionmenu implements NavigationView.OnNavigationItemSelectedListener{
 
-    Boolean exit=false;
+    Boolean exit=false,qwerty=true;
     static int a=1;
     Context context=Navigation1.this;
     Button submit,submittest;
@@ -231,7 +231,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
                         .show();
             }
         });
-        Log.i("size",String.valueOf(count1));
+      //  Log.i("size",String.valueOf(count1));
     }
     @Override
     public void onBackPressed() {
@@ -290,6 +290,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
                 break;
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
+                finishAffinity();
                 startActivity(new Intent(Navigation1.this,MainActivity.class));
                 break;
         }
@@ -301,10 +302,8 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
 
     public void insert()
     {
-        Log.i("enter","0");
         if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Easy"))
         {
-            Log.i("enter","1");
             user u1234=new user(currentu,currentp,currentn,currentph,perscore,true,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
@@ -353,18 +352,23 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
     public  void cal()
     {
         dr02= FirebaseDatabase.getInstance().getReference().child("Users");
+        count1++;
         arr=new ArrayList<>();
+        Log.i("sizeofarr",String.valueOf(arr.size()));
         dr02.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists())
-                {
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        user u02=snapshot.getValue(user.class);
-                        count1++;
-                        //Log.i("score1",String.valueOf(u02.score));
-                        arr.add(u02);
+                if (qwerty) {
+                    if (dataSnapshot.exists()) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            user u02 = snapshot.getValue(user.class);
+
+                            //Log.i("score1",String.valueOf(u02.score));
+                            arr.add(u02);
+                        }
                     }
+                    qwerty = false;
+                    Log.i("sizeofarr2", String.valueOf(arr.size()));
                 }
             }
 

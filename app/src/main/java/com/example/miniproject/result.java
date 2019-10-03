@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import static com.example.miniproject.Navigation1.count;
+import static com.example.miniproject.Navigation1.count1;
 import static com.example.miniproject.Navigation1.score;
 import static com.example.miniproject.Preferences.btn_language;
 import static com.example.miniproject.Preferences.btn_level;
@@ -21,7 +22,6 @@ public class result extends AppCompatActivity {
 
     TextView lang,level,s1,attemp,correct;
     Button btn;
-    DatabaseReference dr12;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class result extends AppCompatActivity {
         btn=findViewById(R.id.back);
 
         s1.setText(String.valueOf(score));
-        attemp.setText(String.valueOf(count));
+        attemp.setText(String.valueOf(count1));
         correct.setText(String.valueOf(score/10));
         lang.setText(btn_language.getText());
         level.setText(btn_level.getText());
