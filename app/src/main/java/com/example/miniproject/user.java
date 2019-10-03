@@ -4,7 +4,7 @@ public class user {
 
     String mail,passwrd,name;
     int score;
-    long number;;
+    long number;
     boolean t11,t12,t13,t21,t22,t23,t31,t32,t33;
     public user()
     {}
@@ -50,20 +50,20 @@ public class user {
         this.name = name;
     }
 
-    public long getNumber() {
-        return number;
-    }
-
-    public void setNumber(long number) {
-        this.number = number;
-    }
-
     public int getScore() {
         return score;
     }
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public long getNumber() {
+        return number;
+    }
+
+    public void setNumber(long number) {
+        this.number = number;
     }
 
     public boolean isT11() {
