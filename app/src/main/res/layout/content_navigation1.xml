@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_navigation1"
     android:id="@+id/container"
-    android:background="@drawable/gradient">
+    android:background="#000">
 
     <LinearLayout
         android:id="@+id/relativeLayout"
@@ -26,12 +27,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_gravity="center"
             android:padding="10dp">
 
             <LinearLayout
                 android:layout_width="180dp"
                 android:layout_height="90dp"
                 android:layout_marginLeft="5dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -56,6 +59,7 @@
                 android:layout_width="180dp"
                 android:layout_height="90dp"
                 android:layout_marginLeft="15dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -97,6 +101,8 @@
                     android:layout_height="match_parent"
                     android:inputType="textMultiLine"
                     android:text="Question"
+                    android:layout_gravity="center"
+                    android:background="#181818"
                     android:textColor="@android:color/background_light"
                     android:textSize="24dp" />
                 <RadioGroup
@@ -107,14 +113,14 @@
                     android:padding="10dp">
                     <RadioButton
                         android:id="@+id/first"
-                        android:buttonTint="@android:color/holo_orange_dark"
+                        android:buttonTint="#601470"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/background_light"
                         android:text="First"
                         android:textSize="24dp"/>
                     <RadioButton
-                        android:buttonTint="@android:color/holo_orange_dark"
+                        android:buttonTint="#601470"
                         android:id="@+id/second"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -122,7 +128,7 @@
                         android:text="Second"
                         android:textSize="24dp"/>
                     <RadioButton
-                        android:buttonTint="@android:color/holo_orange_dark"
+                        android:buttonTint="#601470"
                         android:id="@+id/third"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -130,7 +136,7 @@
                         android:text="Third"
                         android:textSize="24dp"/>
                     <RadioButton
-                        android:buttonTint="@android:color/holo_orange_dark"
+                        android:buttonTint="#601470"
                         android:id="@+id/fourth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -156,7 +162,7 @@
                     android:layout_alignParentBottom="true"
                     android:text="Submit"
                     android:padding="5dp"
-                    android:background="@android:color/holo_orange_dark"
+                    android:background="#0E26B1"
                     android:textColor="@android:color/background_light"
                     android:textSize="25dp" />
                 <Button
@@ -167,7 +173,7 @@
                     android:layout_alignParentBottom="true"
                     android:text="Submit Test"
                     android:padding="5dp"
-                    android:background="@android:color/holo_orange_dark"
+                    android:background="#B2022F"
                     android:textColor="@android:color/background_light"
                     android:textSize="25dp" />
             </LinearLayout>

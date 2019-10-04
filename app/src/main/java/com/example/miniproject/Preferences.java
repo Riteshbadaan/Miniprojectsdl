@@ -38,7 +38,7 @@ public class Preferences extends optionmenu {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preferences);
+        setContentView(R.layout.preferences);
 
         getSupportActionBar().setTitle("Preferences");
 

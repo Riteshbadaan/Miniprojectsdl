@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient">
+    android:background="#000">
 
     <EditText
         android:id="@+id/name"
@@ -11,7 +12,7 @@
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="#11000000"
+        android:background="#181818"
         android:drawableLeft="@drawable/ic_action_name"
         android:ems="10"
         android:hint="Name"
@@ -29,7 +30,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/name"
-        android:background="#11000000"
+        android:background="#181818"
         android:drawableLeft="@drawable/ic_action_phone"
         android:ems="10"
         android:hint="Phone Number"
@@ -45,7 +46,7 @@
         android:layout_below="@+id/phone"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="#11000000"
+        android:background="#181818"
         android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
         android:hint="Email Address"
@@ -62,7 +63,7 @@
         android:layout_below="@id/username"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="#11000000"
+        android:background="#181818"
         android:drawableLeft="@drawable/ic_action_pass"
         android:ems="10"
         android:hint="Password"
@@ -78,7 +79,7 @@
         android:layout_below="@id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="#11000000"
+        android:background="#181818"
         android:drawableLeft="@drawable/ic_action_pass"
         android:ems="10"
         android:hint="Confirm Password"
@@ -100,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/confirm_password"
         android:layout_marginRight="50dp"
-        android:background="@android:color/holo_orange_dark"
+        android:background="#0E26B1"
         android:text="Register"
         android:textColor="#fff"
         android:textStyle="bold" />
@@ -110,8 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/confirm_password"
-
-            android:background="@android:color/holo_orange_dark"
+            android:background="#B2022F"
             android:text="Reset"
             android:textColor="#fff"
             android:textStyle="bold" />
