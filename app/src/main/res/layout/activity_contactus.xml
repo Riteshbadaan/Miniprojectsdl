@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".contactus"
-    android:background="@drawable/gradient">
+    android:background="#000">
 
     <LinearLayout
         android:id="@+id/linearLayout6"
@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:background="#01081F"
+                android:background="#0E26B1"
                 android:gravity="center"
                 android:text="Contact Us"
                 android:textColor="@android:color/background_light"
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
-                    android:background="#01081F"
+                    android:background="#181818"
                     android:orientation="horizontal"
                     android:padding="10dp">
                     <LinearLayout
@@ -83,6 +83,7 @@
                             android:layout_gravity="center"
                             android:autoLink="phone"
                             android:padding="3dp"
+                            android:textColorLink="#B2022F"
                             android:text="+91 9469087466"
                             android:textSize="21dp" />
                     </LinearLayout>
@@ -94,7 +95,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="#01081F"
+                    android:background="#181818"
                     android:orientation="horizontal"
                     android:padding="10dp">
 
@@ -128,6 +129,7 @@
                         <TextView
                             android:id="@+id/phone2"
                             android:layout_width="wrap_content"
+                            android:textColorLink="#B2022F"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:autoLink="phone"
@@ -143,7 +145,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:layout_marginTop="10dp"
-                    android:background="#01081F"
+                    android:background="#181818"
                     android:orientation="horizontal"
                     android:padding="10dp">
 
@@ -182,6 +184,7 @@
                             android:layout_gravity="center"
                             android:autoLink="phone"
                             android:padding="3dp"
+                            android:textColorLink="#B2022F"
                             android:text="+91 9834031037"
                             android:textSize="21dp" />
                     </LinearLayout>
