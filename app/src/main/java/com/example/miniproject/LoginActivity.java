@@ -85,7 +85,7 @@ public class LoginActivity extends Fragment {
                                     firename=ui;
                                     Toasty.success(getActivity(), "Login Successful", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(view.getContext(), Preferences.class);
-                                    getActivity().finishAffinity();
+                                    getActivity().finish();
                                     startActivity(i);
 
                                 } else {

@@ -18,6 +18,10 @@
             android:icon="@drawable/ic_prefer"
             android:title="Preferences" />
         <item
+            android:id="@+id/status"
+            android:icon="@drawable/ic_status"
+            android:title="Status" />
+        <item
             android:id="@+id/contact"
             android:icon="@drawable/ic_contact"
             android:title="Contact Us" />

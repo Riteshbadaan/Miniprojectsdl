@@ -98,7 +98,7 @@ public class RegisterActivity extends Fragment {
                                 if (task.isSuccessful()) {
 
                                     firebaseAuth.signInWithEmailAndPassword(u, p);
-                                    user u1 = new user(u,p,n,ph,0,false,false,false,false,false,false,false,false,false);
+                                    user u1 = new user(u,p,n,ph,0,0,0,0,false,false,false,false,false,false,false,false,false);
                                     FirebaseUser u2 = FirebaseAuth.getInstance().getCurrentUser();
                                     if(u2!=null) {
                                         String ui="";
@@ -118,7 +118,7 @@ public class RegisterActivity extends Fragment {
                                     }
                                     Toasty.success(getActivity(), "Registration Successful", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(view.getContext(), Preferences.class);
-                                    getActivity().finishAffinity();
+                                    getActivity().finish();
                                     startActivity(i);
 
                                 } else {

@@ -2,6 +2,7 @@ package com.example.miniproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -32,8 +33,9 @@ public class Preferences extends optionmenu {
     RadioGroup radiogrp_language,radiogrp_mode,radiogrp_level;
     Boolean c1,c2,c3,cpp1,cpp2,cpp3,java1,java2,java3;
     String currentu,currentp,currentn;
-    int currents;
+    int currents,currentcs,currentc1s,currentjavas;
     long currentph;
+    Boolean exit1=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,9 @@ public class Preferences extends optionmenu {
                     currentn=dataSnapshot.child("name").getValue().toString();
                     currentph=Long.parseLong(dataSnapshot.child("number").getValue().toString());
                     currents=Integer.parseInt(dataSnapshot.child("score").getValue().toString());
+                    currentcs=Integer.parseInt(dataSnapshot.child("cscore").getValue().toString());
+                    currentc1s=Integer.parseInt(dataSnapshot.child("c1score").getValue().toString());
+                    currentjavas=Integer.parseInt(dataSnapshot.child("javascore").getValue().toString());
                     c1=Boolean.parseBoolean(dataSnapshot.child("t11").getValue().toString());
                     c2=Boolean.parseBoolean(dataSnapshot.child("t12").getValue().toString());
                     c3=Boolean.parseBoolean(dataSnapshot.child("t13").getValue().toString());
@@ -112,6 +117,9 @@ public class Preferences extends optionmenu {
                         i.putExtra("name",currentn);
                         i.putExtra("number",currentph);
                         i.putExtra("score",currents);
+                        i.putExtra("cscore",currentcs);
+                        i.putExtra("c1score",currentc1s);
+                        i.putExtra("javascore",currentjavas);
                         i.putExtra("t11",c1);
                         i.putExtra("t12",c2);
                         i.putExtra("t13",c3);
@@ -136,6 +144,9 @@ public class Preferences extends optionmenu {
                         i.putExtra("name",currentn);
                         i.putExtra("number",currentph);
                         i.putExtra("score",currents);
+                        i.putExtra("cscore",currentcs);
+                        i.putExtra("c1score",currentc1s);
+                        i.putExtra("javascore",currentjavas);
                         i.putExtra("t11",c1);
                         i.putExtra("t12",c2);
                         i.putExtra("t13",c3);
@@ -160,6 +171,9 @@ public class Preferences extends optionmenu {
                         i.putExtra("name",currentn);
                         i.putExtra("number",currentph);
                         i.putExtra("score",currents);
+                        i.putExtra("cscore",currentcs);
+                        i.putExtra("c1score",currentc1s);
+                        i.putExtra("javascore",currentjavas);
                         i.putExtra("t11",c1);
                         i.putExtra("t12",c2);
                         i.putExtra("t13",c3);
@@ -184,6 +198,9 @@ public class Preferences extends optionmenu {
                         i.putExtra("name",currentn);
                         i.putExtra("number",currentph);
                         i.putExtra("score",currents);
+                        i.putExtra("cscore",currentcs);
+                        i.putExtra("c1score",currentc1s);
+                        i.putExtra("javascore",currentjavas);
                         i.putExtra("t11",c1);
                         i.putExtra("t12",c2);
                         i.putExtra("t13",c3);
@@ -208,6 +225,9 @@ public class Preferences extends optionmenu {
                         i.putExtra("name",currentn);
                         i.putExtra("number",currentph);
                         i.putExtra("score",currents);
+                        i.putExtra("cscore",currentcs);
+                        i.putExtra("c1score",currentc1s);
+                        i.putExtra("javascore",currentjavas);
                         i.putExtra("t11",c1);
                         i.putExtra("t12",c2);
                         i.putExtra("t13",c3);
@@ -232,6 +252,9 @@ public class Preferences extends optionmenu {
                         i.putExtra("name",currentn);
                         i.putExtra("number",currentph);
                         i.putExtra("score",currents);
+                        i.putExtra("cscore",currentcs);
+                        i.putExtra("c1score",currentc1s);
+                        i.putExtra("javascore",currentjavas);
                         i.putExtra("t11",c1);
                         i.putExtra("t12",c2);
                         i.putExtra("t13",c3);
@@ -256,6 +279,9 @@ public class Preferences extends optionmenu {
                         i.putExtra("name",currentn);
                         i.putExtra("number",currentph);
                         i.putExtra("score",currents);
+                        i.putExtra("cscore",currentcs);
+                        i.putExtra("c1score",currentc1s);
+                        i.putExtra("javascore",currentjavas);
                         i.putExtra("t11",c1);
                         i.putExtra("t12",c2);
                         i.putExtra("t13",c3);
@@ -280,6 +306,9 @@ public class Preferences extends optionmenu {
                         i.putExtra("name",currentn);
                         i.putExtra("number",currentph);
                         i.putExtra("score",currents);
+                        i.putExtra("cscore",currentcs);
+                        i.putExtra("c1score",currentc1s);
+                        i.putExtra("javascore",currentjavas);
                         i.putExtra("t11",c1);
                         i.putExtra("t12",c2);
                         i.putExtra("t13",c3);
@@ -304,6 +333,9 @@ public class Preferences extends optionmenu {
                         i.putExtra("name",currentn);
                         i.putExtra("number",currentph);
                         i.putExtra("score",currents);
+                        i.putExtra("cscore",currentcs);
+                        i.putExtra("c1score",currentc1s);
+                        i.putExtra("javascore",currentjavas);
                         i.putExtra("t11",c1);
                         i.putExtra("t12",c2);
                         i.putExtra("t13",c3);
@@ -328,5 +360,21 @@ public class Preferences extends optionmenu {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+    public void onBackPressed() {
+        if(exit1) {
+            super.onBackPressed();
+            finishAffinity();
+            finish();
+            return;
+        }
+        this.exit1=true;
+        Toasty.info(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                exit1=false;
+            }
+        },2000);
     }
 }

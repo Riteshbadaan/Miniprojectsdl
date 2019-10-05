@@ -3,6 +3,7 @@ package com.example.miniproject;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -50,12 +51,13 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
     RadioGroup radioGroup;
     RadioButton r1,r2,r3,r4;
     int answer=0,attempans,t;
-    static int score,perscore=0,count,count1;
+    static int score,perscore=0,perc=0,perc1=0,perjava=0,count,count1;
+    static int statusc,statusc1,statusjava;
     TextView ques,sco,time,headeruser,headeremail;
     DatabaseReference dr,dr12,dr02,dr04;
     static ArrayList<user>arr;
     static String currentu,currentp,currentn;
-    static int currents;
+    static int currents,currentcs,currentc1s,currentjavas;
     static long currentph;
     static Boolean currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3;
 
@@ -74,6 +76,9 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         currentn= i12.getStringExtra("name");
         currentph= i12.getLongExtra("number",0);
         currents= i12.getIntExtra("score",0);
+        currentcs= i12.getIntExtra("cscore",0);
+        currentc1s= i12.getIntExtra("c1score",0);
+        currentjavas= i12.getIntExtra("javascore",0);
         currentc1= i12.getBooleanExtra("t11",false);
         currentc2= i12.getBooleanExtra("t12",false);
         currentc3= i12.getBooleanExtra("t13",false);
@@ -83,6 +88,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         currentjava1=i12.getBooleanExtra("t31",false);
         currentjava2= i12.getBooleanExtra("t32",false);
         currentjava3= i12.getBooleanExtra("t33",false);
+
 
         time=findViewById(R.id.time);
         if(btn_mode.getText().toString().equals("Test"))
@@ -142,6 +148,9 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         dr12=FirebaseDatabase.getInstance().getReference().child("Users").child(firename);
 
         perscore=currents;
+        perc=currentcs;
+        perc1=currentc1s;
+        perjava=currentjavas;
         if(btn_mode.getText().toString().equals("Test"))
             insert();
 
@@ -166,10 +175,12 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                count1++;
                 if(btn_mode.getText().toString().equals("Test")) {
                     if (answer == attempans) {
                         Log.i("count", String.valueOf(count));
                         if (count < 15) {
+
                             score += 10;
                             perscore += 10;
                             sco.setText(String.valueOf(score));
@@ -293,6 +304,9 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
             case R.id.prefer:
                 startActivity(new Intent(Navigation1.this,Preferences.class));
                 break;
+            case R.id.status:
+                startActivity(new Intent(Navigation1.this,status.class));
+                break;
             case R.id.contact:
                 startActivity(new Intent(Navigation1.this,contactus.class));
                 break;
@@ -317,6 +331,9 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
                 if(dataSnapshot.exists()) {
                     headeruser.setText(dataSnapshot.child("name").getValue().toString());
                     headeremail.setText(dataSnapshot.child("mail").getValue().toString());
+                    statusc=Integer.parseInt(dataSnapshot.child("cscore").getValue().toString());
+                    statusc1=Integer.parseInt(dataSnapshot.child("c1score").getValue().toString());
+                    statusjava=Integer.parseInt(dataSnapshot.child("javascore").getValue().toString());
                 }
             }
 
@@ -331,47 +348,47 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
     {
         if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Easy"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,true,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc+score,perc1,perjava,true,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Medium"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,true,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc+score,perc1,perjava,currentc1,true,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Hard"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,true,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc+score,perc1,perjava,currentc1,currentc2,true,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Easy"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,true,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1+score,perjava,currentc1,currentc2,currentc3,true,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Medium"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,currentcpp1,true,currentcpp3,currentjava1,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1+score,perjava,currentc1,currentc2,currentc3,currentcpp1,true,currentcpp3,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Hard"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,true,currentjava1,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1+score,perjava,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,true,currentjava1,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("Java") && btn_level.getText().toString().equals("Easy"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,true,currentjava2,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1,perjava+score,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,true,currentjava2,currentjava3);
             dr12.setValue(u1234);
         }
         else if(btn_language.getText().toString().equals("Java") && btn_level.getText().toString().equals("Medium"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,true,currentjava3);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1,perjava+score,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,true,currentjava3);
             dr12.setValue(u1234);
         }
         else
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,true);
+            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1,perjava+score,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,true);
             dr12.setValue(u1234);
         }
     }
@@ -380,7 +397,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
     {
 
         dr02= FirebaseDatabase.getInstance().getReference().child("Users");
-        count1++;
+
         arr=new ArrayList<>();
         Log.i("sizeofarr",String.valueOf(arr.size()));
         dr02.addValueEventListener(new ValueEventListener() {
