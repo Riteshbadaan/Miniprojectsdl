@@ -173,8 +173,9 @@
                     android:fontFamily="@font/regular"
                     android:padding="5dp"
                     android:background="#0E26B1"
+                    android:textStyle="bold"
                     android:textColor="@android:color/background_light"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
                 <Button
                     android:id="@+id/button1"
                     android:layout_marginLeft="30dp"
@@ -185,8 +186,9 @@
                     android:text="Submit Test"
                     android:padding="5dp"
                     android:background="#B2022F"
+                    android:textStyle="bold"
                     android:textColor="@android:color/background_light"
-                    android:textSize="25dp" />
+                    android:textSize="20dp" />
             </LinearLayout>
             </LinearLayout>
         </ScrollView>

@@ -198,6 +198,8 @@
         android:fontFamily="@font/regular"
         android:background="#0E26B1"
         android:text="Submit"
+        android:textStyle="bold"
+        android:textSize="20dp"
         android:textColor="#fff"
         android:id="@+id/submit"/>
 
