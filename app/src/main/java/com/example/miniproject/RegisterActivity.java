@@ -118,6 +118,7 @@ public class RegisterActivity extends Fragment {
                                     }
                                     Toasty.success(getActivity(), "Registration Successful", Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(view.getContext(), Preferences.class);
+                                    getActivity().finishAffinity();
                                     startActivity(i);
 
                                 } else {
