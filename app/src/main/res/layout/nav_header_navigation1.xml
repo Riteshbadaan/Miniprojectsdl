@@ -41,6 +41,6 @@
         android:paddingLeft="16dp"
         android:fontFamily="@font/regular"
         android:textColor="#fff"
-        android:text="@string/nav_header_subtitle" />
+        android:text="www.google.com" />
 
 </LinearLayout>
