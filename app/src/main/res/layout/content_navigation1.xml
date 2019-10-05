@@ -42,11 +42,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SCORE"
+                    android:fontFamily="@font/regular"
                     android:textColor="@android:color/background_light"
                     android:textSize="25dp" />
 
                 <TextView
                     android:id="@+id/score"
+                    android:fontFamily="@font/regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
@@ -67,11 +69,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TIME"
+                    android:fontFamily="@font/regular"
                     android:textColor="@android:color/background_light"
                     android:textSize="25dp" />
 
                 <TextView
                     android:id="@+id/time"
+                    android:fontFamily="@font/regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/background_light"
@@ -96,6 +100,7 @@
 
                 <TextView
                     android:padding="7dp"
+                    android:fontFamily="@font/regular"
                     android:id="@+id/questiontext"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -114,6 +119,7 @@
                     <RadioButton
                         android:id="@+id/first"
                         android:buttonTint="#601470"
+                        android:fontFamily="@font/regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/background_light"
@@ -122,6 +128,7 @@
                     <RadioButton
                         android:buttonTint="#601470"
                         android:id="@+id/second"
+                        android:fontFamily="@font/regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/background_light"
@@ -130,6 +137,7 @@
                     <RadioButton
                         android:buttonTint="#601470"
                         android:id="@+id/third"
+                        android:fontFamily="@font/regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/background_light"
@@ -138,6 +146,7 @@
                     <RadioButton
                         android:buttonTint="#601470"
                         android:id="@+id/fourth"
+                        android:fontFamily="@font/regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/background_light"
@@ -161,6 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:text="Submit"
+                    android:fontFamily="@font/regular"
                     android:padding="5dp"
                     android:background="#0E26B1"
                     android:textColor="@android:color/background_light"
@@ -168,6 +178,7 @@
                 <Button
                     android:id="@+id/button1"
                     android:layout_marginLeft="30dp"
+                    android:fontFamily="@font/regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"

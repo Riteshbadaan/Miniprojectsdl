@@ -15,6 +15,7 @@
         android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
         android:hint="Email Address"
+        android:fontFamily="@font/regular"
         android:inputType="textPersonName"
         android:textColor="#fff"
         android:textColorHint="#808080"
@@ -29,6 +30,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="#181818"
+        android:fontFamily="@font/regular"
         android:drawableLeft="@drawable/ic_action_pass"
         android:ems="10"
         android:hint="Password"
@@ -44,6 +46,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:background="#601470"
+        android:fontFamily="@font/regular"
         android:textStyle="bold"
         android:textColor="#fff"
         android:text="Login" />
