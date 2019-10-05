@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,8 +51,8 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
     RadioButton r1,r2,r3,r4;
     int answer=0,attempans,t;
     static int score,perscore=0,count,count1;
-    TextView ques,sco,time;
-    DatabaseReference dr,dr12,dr02;
+    TextView ques,sco,time,headeruser,headeremail;
+    DatabaseReference dr,dr12,dr02,dr04;
     static ArrayList<user>arr;
     static String currentu,currentp,currentn;
     static int currents;
@@ -132,11 +133,18 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         NavigationView navigationView =findViewById(R.id.nav_view);
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
+
+        cal();
+        usercal();
+        View headerView = navigationView.getHeaderView(0);
+        headeruser=headerView.findViewById(R.id.headeruser);
+        headeremail=headerView.findViewById(R.id.headeremail);
         dr12=FirebaseDatabase.getInstance().getReference().child("Users").child(firename);
+
         perscore=currents;
         if(btn_mode.getText().toString().equals("Test"))
             insert();
-        cal();
+
         questioncome();
 
 
@@ -300,6 +308,25 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         return true;
     }
 
+    public void usercal()
+    {
+        dr04= FirebaseDatabase.getInstance().getReference("Users").child(firename);
+        dr04.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    headeruser.setText(dataSnapshot.child("name").getValue().toString());
+                    headeremail.setText(dataSnapshot.child("mail").getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     public void insert()
     {
         if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Easy"))
@@ -351,6 +378,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
 
     public  void cal()
     {
+
         dr02= FirebaseDatabase.getInstance().getReference().child("Users");
         count1++;
         arr=new ArrayList<>();
@@ -377,7 +405,6 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
 
             }
         });
-
     }
 
 public void questioncome()
