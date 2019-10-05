@@ -21,23 +21,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <TextView
-                android:padding="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="40dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:enabled="false"
-                android:background="#0E26B1"
-                android:gravity="center"
-                android:text="Contact Us"
-                android:textColor="@android:color/background_light"
-                android:textSize="30dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="37dp"
+                android:layout_marginTop="135dp"
                 android:orientation="vertical">
 
 
@@ -71,6 +59,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:fontFamily="@font/regular"
                             android:enabled="false"
                             android:text="Ritesh Badaan"
                             android:textColor="#ffffff"
@@ -81,6 +70,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:fontFamily="@font/regular"
                             android:autoLink="phone"
                             android:padding="3dp"
                             android:textColorLink="#B2022F"
@@ -123,6 +113,7 @@
                             android:layout_gravity="center"
                             android:enabled="false"
                             android:text="Ridhwik Kalgaonkar"
+                            android:fontFamily="@font/regular"
                             android:textColor="#ffffff"
                             android:textSize="23dp" />
 
@@ -132,6 +123,7 @@
                             android:textColorLink="#B2022F"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:fontFamily="@font/regular"
                             android:autoLink="phone"
                             android:padding="3dp"
                             android:text="+91 9922337964"
@@ -157,7 +149,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="110dp"
                             android:adjustViewBounds="true"
-                            android:src="@drawable/raj"
                             android:scaleType="fitCenter" />
                     </LinearLayout>
 
@@ -172,6 +163,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:fontFamily="@font/regular"
                             android:enabled="false"
                             android:text="Rajwardhan Sinha"
                             android:textColor="#ffffff"
@@ -182,6 +174,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:fontFamily="@font/regular"
                             android:autoLink="phone"
                             android:padding="3dp"
                             android:textColorLink="#B2022F"

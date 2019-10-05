@@ -21,6 +21,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="Choose language: "
+        android:fontFamily="@font/regular"
         android:textColor="#fff"
         android:layout_below="@+id/imageView"
         android:textSize="30dp"
@@ -45,12 +46,14 @@
             android:text="C"
             android:textColor="#fff"
             android:layout_weight="1"
+            android:fontFamily="@font/regular"
             android:textSize="20dp"
             android:textStyle="bold" />
 
         <RadioButton
             android:buttonTint="#B2022F"
             android:id="@+id/CplusplusButton2"
+            android:fontFamily="@font/regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -63,6 +66,7 @@
         <RadioButton
             android:buttonTint="#B2022F"
             android:id="@+id/JavaButton3"
+            android:fontFamily="@font/regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -76,6 +80,7 @@
     <TextView
         android:id="@+id/diff"
         android:layout_width="350dp"
+        android:fontFamily="@font/regular"
         android:layout_height="wrap_content"
         android:layout_below="@+id/radiogrp_language"
         android:text="Choose difficulty:"
@@ -98,6 +103,7 @@
             android:id="@+id/EasyButton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/regular"
             android:checked="true"
             android:layout_marginTop="10dp"
             android:text="Easy"
@@ -113,6 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
+            android:fontFamily="@font/regular"
             android:text="Medium"
             android:textColor="#fff"
             android:textSize="20dp"
@@ -121,6 +128,7 @@
         <RadioButton
             android:buttonTint="#B2022F"
             android:id="@+id/HardButton6"
+            android:fontFamily="@font/regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -135,6 +143,7 @@
         android:id="@+id/pref"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/regular"
         android:layout_below="@+id/radiogrp_level"
         android:text="Choose mode:"
         android:textColor="#fff"
@@ -155,6 +164,7 @@
             android:buttonTint="#B2022F"
             android:id="@+id/radioButton7"
             android:layout_width="match_parent"
+            android:fontFamily="@font/regular"
             android:layout_height="wrap_content"
             android:checked="true"
             android:layout_marginTop="10dp"
@@ -168,6 +178,7 @@
             android:buttonTint="#B2022F"
             android:id="@+id/radioButton8"
             android:layout_width="match_parent"
+            android:fontFamily="@font/regular"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
@@ -184,8 +195,11 @@
         android:layout_below="@+id/radiogrp_mode"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
+        android:fontFamily="@font/regular"
         android:background="#0E26B1"
         android:text="Submit"
+        android:textStyle="bold"
+        android:textSize="20dp"
         android:textColor="#fff"
         android:id="@+id/submit"/>
 
