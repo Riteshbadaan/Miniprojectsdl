@@ -1,8 +1,12 @@
 package com.example.miniproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
+
 import static com.example.miniproject.Navigation1.statusc;
 import static com.example.miniproject.Navigation1.statusc1;
 import static com.example.miniproject.Navigation1.statusjava;
@@ -10,7 +14,7 @@ import static com.example.miniproject.Navigation1.statusjava;
 public class status extends AppCompatActivity {
 
     int arr1234[],j;
-    EditText c,c1,java;
+    TextView c,c1,java;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,32 +32,53 @@ public class status extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        if(statusc>=400)
-            c.setText("Excellent");
-        else if(statusc>=300 && statusc<400)
-            c.setText("Good");
-        else if(statusc>=200 && statusc<300)
-            c.setText("Average");
-        else
-            c.setText("Need more practice");
+        if(statusc>=400) {
+            c.setText("You are a pro!");
+            c.setBackgroundColor(Color.parseColor("#24562B"));
+        }
+        else if(statusc>=200 && statusc<400) {
+            c.setText("You're almost at the top!");
+            c.setBackgroundColor(Color.parseColor("#FFE338"));
+        }
+        else if(statusc>0 && statusc<200) {
+            c.setBackgroundColor(Color.parseColor("#D61A3C"));
+            c.setText("You need to work hard!");
+        }
+        else {
+            c.setText("Start solving now!");
+        }
 
-        if(statusc1>=400)
-            c1.setText("Excellent");
-        else if(statusc1>=300 && statusc1<400)
-            c1.setText("Good");
-        else if(statusc1>=200 && statusc1<300)
-            c1.setText("Average");
-        else
-            c1.setText("Need more practice");
+        if(statusc1>=400) {
+            c1.setText("You are a pro!");
+            c1.setBackgroundColor(Color.parseColor("#24562B"));
+        }
+        else if(statusc1>=200 && statusc1<400) {
+            c1.setText("You're almost at the top!");
+            c1.setBackgroundColor(Color.parseColor("#FFE338"));
+        }
+        else if(statusc1>0 && statusc1<200) {
+            c1.setBackgroundColor(Color.parseColor("#D61A3C"));
+            c1.setText("You need to work hard!");
+        }
+        else {
+            c1.setText("Start solving now!");
+        }
 
-        if(statusjava>=400)
-            java.setText("Excellent");
-        else if(statusjava>=300 && statusjava<400)
-            java.setText("Good");
-        else if(statusjava>=200 && statusjava<300)
-            java.setText("Average");
-        else
-            java.setText("Need more practice");
+        if(statusjava>=400) {
+            java.setText("You are a pro!");
+            java.setBackgroundColor(Color.parseColor("#24562B"));
+        }
+        else if(statusjava>=200 && statusjava<400) {
+            java.setText("You're almost at the top!");
+            java.setBackgroundColor(Color.parseColor("#FFE338"));
+        }
+        else if(statusjava>0 && statusjava<200) {
+            java.setBackgroundColor(Color.parseColor("#D61A3C"));
+            java.setText("You need to work hard!");
+        }
+        else {
+            java.setText("Start solving now!");
+        }
 
     }
     @Override
