@@ -110,7 +110,7 @@ public class Preferences extends optionmenu {
                 Log.i("c1",String.valueOf(c1));
                 if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Easy"))
                 {
-                    if(!c1) {
+                    if(!c1 || btn_mode.getText().toString().equals("Practice")) {
                         Intent i=new Intent(Preferences.this, Navigation1.class);
                         i.putExtra("username",currentu);
                         i.putExtra("password",currentp);
@@ -136,7 +136,7 @@ public class Preferences extends optionmenu {
                 }
                 else if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Medium"))
                 {
-                    if(!c2)
+                    if(!c2 || btn_mode.getText().toString().equals("Practice"))
                     {
                         Intent i=new Intent(Preferences.this, Navigation1.class);
                         i.putExtra("username",currentu);
@@ -163,7 +163,7 @@ public class Preferences extends optionmenu {
                 }
                 else if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Hard"))
                 {
-                    if(!c3)
+                    if(!c3 || btn_mode.getText().toString().equals("Practice"))
                     {
                         Intent i=new Intent(Preferences.this, Navigation1.class);
                         i.putExtra("username",currentu);
@@ -190,7 +190,7 @@ public class Preferences extends optionmenu {
                 }
                 else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Easy"))
                 {
-                    if(!cpp1)
+                    if(!cpp1 || btn_mode.getText().toString().equals("Practice"))
                     {
                         Intent i=new Intent(Preferences.this, Navigation1.class);
                         i.putExtra("username",currentu);
@@ -217,7 +217,7 @@ public class Preferences extends optionmenu {
                 }
                 else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Medium"))
                 {
-                    if(!cpp2)
+                    if(!cpp2 || btn_mode.getText().toString().equals("Practice"))
                     {
                         Intent i=new Intent(Preferences.this, Navigation1.class);
                         i.putExtra("username",currentu);
@@ -244,7 +244,7 @@ public class Preferences extends optionmenu {
                 }
                 else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Hard"))
                 {
-                    if(!cpp3)
+                    if(!cpp3 || btn_mode.getText().toString().equals("Practice"))
                     {
                         Intent i=new Intent(Preferences.this, Navigation1.class);
                         i.putExtra("username",currentu);
@@ -271,7 +271,7 @@ public class Preferences extends optionmenu {
                 }
                 else if(btn_language.getText().toString().equals("Java") && btn_level.getText().toString().equals("Easy"))
                 {
-                    if(!java1)
+                    if(!java1 || btn_mode.getText().toString().equals("Practice"))
                     {
                         Intent i=new Intent(Preferences.this, Navigation1.class);
                         i.putExtra("username",currentu);
@@ -298,7 +298,7 @@ public class Preferences extends optionmenu {
                 }
                 else if(btn_language.getText().toString().equals("Java") && btn_level.getText().toString().equals("Medium"))
                 {
-                    if(!java2)
+                    if(!java2 || btn_mode.getText().toString().equals("Practice"))
                     {
                         Intent i=new Intent(Preferences.this, Navigation1.class);
                         i.putExtra("username",currentu);
@@ -325,7 +325,7 @@ public class Preferences extends optionmenu {
                 }
                 else
                 {
-                    if(!java3)
+                    if(!java3 || btn_mode.getText().toString().equals("Practice"))
                     {
                         Intent i=new Intent(Preferences.this, Navigation1.class);
                         i.putExtra("username",currentu);

@@ -22,7 +22,7 @@ public class QuestionPage extends AppCompatActivity {
 
     TextView question,lang,diff,op1,op2,op3,op4,ans;
     Button btn;
-    long id=-1;
+    long id=0;
     DatabaseReference d1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class QuestionPage extends AppCompatActivity {
         op4=findViewById(R.id.option4);
         ans=findViewById(R.id.answer);
         btn=findViewById(R.id.button);
-        d1= FirebaseDatabase.getInstance().getReference("Questions");
+        d1= FirebaseDatabase.getInstance().getReference("Practice");
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +57,7 @@ public class QuestionPage extends AppCompatActivity {
                 else {
                         question question=new question(q,o1,o2,o3,o4,Integer.parseInt(a));
                         id++;
-                        d1.child(l).child(d).child(String.valueOf(id+1)).setValue(question);
+                        d1.child(l).child(d).child(String.valueOf(id)).setValue(question);
                     Toasty.success(QuestionPage.this, "Question added", Toast.LENGTH_SHORT).show();
                 }
             }

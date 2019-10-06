@@ -151,6 +151,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         perc=currentcs;
         perc1=currentc1s;
         perjava=currentjavas;
+
         if(btn_mode.getText().toString().equals("Test"))
             insert();
 
