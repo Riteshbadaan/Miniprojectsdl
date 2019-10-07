@@ -65,72 +65,60 @@ public class RegisterActivity extends Fragment {
                 final String p = pass.getText().toString().trim();
                 final String n = name.getText().toString().trim();
                 String cp = confpass.getText().toString().trim();
-                final long ph = Long.parseLong(phone.getText().toString());
+                final String ph = phone.getText().toString();
 
-
-                if(TextUtils.isEmpty(u)) {
-
+                if (name.getText().toString().isEmpty())
+                    Toasty.info(getActivity(), "Please enter your name", Toast.LENGTH_SHORT).show();
+                else if (phone.getText().toString().isEmpty())
+                    Toasty.info(getActivity(), "Please enter your contact number", Toast.LENGTH_SHORT).show();
+                else if (TextUtils.isEmpty(u))
                     Toasty.info(getActivity(), "Please enter email", Toast.LENGTH_SHORT).show();
-                    return;
-
-                }
-                if(TextUtils.isEmpty(p)) {
-
+                else if (TextUtils.isEmpty(p))
                     Toasty.info(getActivity(), "Please enter password", Toast.LENGTH_SHORT).show();
-                    return;
-
-                }
-                if(p.length()<6) {
-
+                else if (p.length() < 6)
                     Toasty.info(getActivity(), "Password too short", Toast.LENGTH_SHORT).show();
-                    return;
-
-                }
-                if(!p.equals(cp)) {
+                else if (!p.equals(cp))
                     Toasty.error(getActivity(), "Passwords do not match", Toast.LENGTH_SHORT).show();
-                    return;
+                else
+                {
+                    firebaseAuth.createUserWithEmailAndPassword(u, p)
+                            .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
 
-                }
-                firebaseAuth.createUserWithEmailAndPassword(u, p)
-                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
+                                        firebaseAuth.signInWithEmailAndPassword(u, p);
+                                        user u1 = new user(u, p, n, ph, 0, 0, 0, 0, false, false, false, false, false, false, false, false, false);
+                                        FirebaseUser u2 = FirebaseAuth.getInstance().getCurrentUser();
+                                        if (u2 != null) {
+                                            String ui = "";
+                                            for (int i = 0; i < u.length(); i++) {
+                                                if (u.charAt(i) == '.' || u.charAt(i) == '#') {
 
-                                    firebaseAuth.signInWithEmailAndPassword(u, p);
-                                    user u1 = new user(u,p,n,ph,0,0,0,0,false,false,false,false,false,false,false,false,false);
-                                    FirebaseUser u2 = FirebaseAuth.getInstance().getCurrentUser();
-                                    if(u2!=null) {
-                                        String ui="";
-                                        for(int i=0;i<u.length();i++)
-                                        {
-                                            if(u.charAt(i)=='.'||u.charAt(i)=='#')
-                                            {
-
+                                                } else {
+                                                    ui += u.charAt(i);
+                                                }
                                             }
-                                            else
-                                            {
-                                                ui+=u.charAt(i);
-                                            }
+                                            firename = ui;
+                                            mdb.child(ui).setValue(u1);
                                         }
-                                        firename=ui;
-                                        mdb.child(ui).setValue(u1);
+                                        Toasty.success(getActivity(), "Registration Successful", Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(view.getContext(), Preferences.class);
+                                        getActivity().finish();
+                                        startActivity(i);
+
+                                    } else {
+
+                                        Toasty.error(getActivity(), "Registration Failed", Toast.LENGTH_SHORT).show();
+
                                     }
-                                    Toasty.success(getActivity(), "Registration Successful", Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(view.getContext(), Preferences.class);
-                                    getActivity().finish();
-                                    startActivity(i);
-
-                                } else {
-
-                                    Toasty.error(getActivity(), "Registration Failed", Toast.LENGTH_SHORT).show();
 
                                 }
-
-                            }
-                        });
+                            });
+                }
             }
         });
+
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

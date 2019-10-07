@@ -15,6 +15,7 @@ public class status extends AppCompatActivity {
 
     int arr1234[],j;
     TextView c,c1,java;
+    String cs,c1s,javas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,53 +34,54 @@ public class status extends AppCompatActivity {
         }
 
         if(statusc>=400) {
-            c.setText("You are a pro!");
+            cs="You are a pro!";
             c.setBackgroundColor(Color.parseColor("#24562B"));
         }
         else if(statusc>=200 && statusc<400) {
-            c.setText("You're almost at the top!");
+            cs="You're almost at the top!";
             c.setBackgroundColor(Color.parseColor("#FFE338"));
         }
         else if(statusc>0 && statusc<200) {
             c.setBackgroundColor(Color.parseColor("#D61A3C"));
-            c.setText("You need to work hard!");
+            cs="You need to work hard!";
         }
         else {
-            c.setText("Start solving now!");
+            cs="Start solving now!";
         }
-
+        c.setText(cs+" ("+statusc+"/450)");
         if(statusc1>=400) {
-            c1.setText("You are a pro!");
+            c1s="You are a pro!";
             c1.setBackgroundColor(Color.parseColor("#24562B"));
         }
         else if(statusc1>=200 && statusc1<400) {
-            c1.setText("You're almost at the top!");
+            c1s="You're almost at the top!";
             c1.setBackgroundColor(Color.parseColor("#FFE338"));
         }
         else if(statusc1>0 && statusc1<200) {
             c1.setBackgroundColor(Color.parseColor("#D61A3C"));
-            c1.setText("You need to work hard!");
+            c1s="You need to work hard!";
         }
         else {
-            c1.setText("Start solving now!");
+            c1s="Start solving now!";
         }
+        c1.setText(c1s+" ("+statusc1+"/450)");
 
         if(statusjava>=400) {
-            java.setText("You are a pro!");
+            javas="You are a pro!";
             java.setBackgroundColor(Color.parseColor("#24562B"));
         }
         else if(statusjava>=200 && statusjava<400) {
-            java.setText("You're almost at the top!");
+            javas="You're almost at the top!";
             java.setBackgroundColor(Color.parseColor("#FFE338"));
         }
         else if(statusjava>0 && statusjava<200) {
             java.setBackgroundColor(Color.parseColor("#D61A3C"));
-            java.setText("You need to work hard!");
+            javas="You need to work hard!";
         }
         else {
-            java.setText("Start solving now!");
+            javas="Start solving now!";
         }
-
+        java.setText(javas+" ("+statusjava+"/450)");
     }
     @Override
     public boolean onSupportNavigateUp() {

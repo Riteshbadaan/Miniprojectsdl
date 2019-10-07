@@ -2,15 +2,14 @@ package com.example.miniproject;
 
 public class user {
 
-    String mail, passwrd, name;
+    String mail, passwrd, name,number;
     int score, cscore, c1score, javascore;
-    long number;
     boolean t11, t12, t13, t21, t22, t23, t31, t32, t33;
 
     public user() {
     }
 
-    public user(String mail, String passwrd, String name, long number,int score, int cscore, int c1score, int javascore,  boolean t11, boolean t12, boolean t13, boolean t21, boolean t22, boolean t23, boolean t31, boolean t32, boolean t33) {
+    public user(String mail, String passwrd, String name, String number,int score, int cscore, int c1score, int javascore,  boolean t11, boolean t12, boolean t13, boolean t21, boolean t22, boolean t23, boolean t31, boolean t32, boolean t33) {
         this.mail = mail;
         this.passwrd = passwrd;
         this.name = name;
@@ -86,11 +85,11 @@ public class user {
         this.javascore = javascore;
     }
 
-    public long getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(long number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

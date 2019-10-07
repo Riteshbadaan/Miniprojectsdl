@@ -51,14 +51,14 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
     RadioGroup radioGroup;
     RadioButton r1,r2,r3,r4;
     int answer=0,attempans,t;
-    static int score,perscore=0,perc=0,perc1=0,perjava=0,count,count1;
+    static int score,perscore=0,perc=0,perc1=0,perjava=0,count,count1,counprac;
     static int statusc,statusc1,statusjava;
     TextView ques,sco,time,headeruser,headeremail;
-    DatabaseReference dr,dr12,dr02,dr04;
+    DatabaseReference dr,dr12,dr02,dr04,drprac;
     static ArrayList<user>arr;
     static String currentu,currentp,currentn;
     static int currents,currentcs,currentc1s,currentjavas;
-    static long currentph;
+    static String currentph;
     static Boolean currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3;
 
     @Override
@@ -68,13 +68,14 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         count=0;
         count1=0;
         score=0;
+        counprac=0;
 
         Intent i12=getIntent();
 
         currentu= i12.getStringExtra("username");
         currentp= i12.getStringExtra("password");
         currentn= i12.getStringExtra("name");
-        currentph= i12.getLongExtra("number",0);
+        currentph= i12.getStringExtra("number");
         currents= i12.getIntExtra("score",0);
         currentcs= i12.getIntExtra("cscore",0);
         currentc1s= i12.getIntExtra("c1score",0);
@@ -173,63 +174,69 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
             }
         });
 
+
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count1++;
-                if(btn_mode.getText().toString().equals("Test")) {
-                    if (answer == attempans) {
-                        Log.i("count", String.valueOf(count));
-                        if (count < 15) {
-
-                            score += 10;
-                            perscore += 10;
-                            sco.setText(String.valueOf(score));
-                            insert();
-                            Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
-                            questioncome();
-                        } else {
-                            score += 10;
-                            perscore += 10;
-                            insert();
-                            sco.setText(String.valueOf(score));
-                            Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Navigation1.this, result.class));
-                        }
-                    } else {
-                        Toasty.error(context, "Wrong answer", Toast.LENGTH_SHORT).show();
-                        if (count < 15)
-                            questioncome();
-                        else
-                            startActivity(new Intent(Navigation1.this, result.class));
-                    }
+                if (radioGroup.getCheckedRadioButtonId() == -1) {
+                    Toasty.warning(context, "You have to select an option", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    if (answer == attempans) {
-                        Log.i("count", String.valueOf(count));
-                        if (count < 15) {
-                            score += 10;
-                            sco.setText(String.valueOf(score));
-                            Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
-                            questioncome();
+                    count1++;
+                        if (btn_mode.getText().toString().equals("Test")) {
+                            if (answer == attempans) {
+                                Log.i("count", String.valueOf(count));
+                                if (count < 15) {
+
+                                    score += 10;
+                                    perscore += 10;
+                                    sco.setText(String.valueOf(score));
+                                    insert();
+                                    Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
+                                    questioncome();
+                                } else {
+                                    score += 10;
+                                    perscore += 10;
+                                    insert();
+                                    sco.setText(String.valueOf(score));
+                                    Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(Navigation1.this, result.class));
+                                }
+                            } else {
+                                Toasty.error(context, "Wrong answer", Toast.LENGTH_SHORT).show();
+                                if (count < 15)
+                                    questioncome();
+                                else
+                                    startActivity(new Intent(Navigation1.this, result.class));
+                            }
                         } else {
-                            score += 10;
-                            sco.setText(String.valueOf(score));
-                            Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
-                            finish();
-                            startActivity(new Intent(Navigation1.this, result.class));
-                        }
-                    } else {
-                        Toasty.error(context, "Wrong answer", Toast.LENGTH_SHORT).show();
-                        if (count < 15)
-                            questioncome();
-                        else {
-                            finish();
-                            startActivity(new Intent(Navigation1.this, result.class));
+                            if (answer == attempans) {
+                                Log.i("count", String.valueOf(count));
+                                if (count < 15) {
+                                    score += 10;
+                                    sco.setText(String.valueOf(score));
+                                    Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
+                                    questioncome();
+                                } else {
+                                    score += 10;
+                                    sco.setText(String.valueOf(score));
+                                    Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                    startActivity(new Intent(Navigation1.this, result.class));
+                                }
+                            } else {
+                                Toasty.error(context, "Wrong answer", Toast.LENGTH_SHORT).show();
+                                if (count < 15)
+                                    questioncome();
+                                else {
+                                    finish();
+                                    startActivity(new Intent(Navigation1.this, result.class));
+                                }
+                            }
                         }
                     }
-                }
                }
 
         });
@@ -427,25 +434,50 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
 
 public void questioncome()
 {
-    count++;
-    dr= FirebaseDatabase.getInstance().getReference("Questions").child(btn_language.getText().toString()).child(btn_level.getText().toString()).child(String.valueOf(count));
-    dr.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            if(dataSnapshot.exists()) {
-                ques.setText(dataSnapshot.child("ques").getValue().toString());
-                r1.setText(dataSnapshot.child("op1").getValue().toString());
-                r2.setText(dataSnapshot.child("op2").getValue().toString());
-                r3.setText(dataSnapshot.child("op3").getValue().toString());
-                r4.setText(dataSnapshot.child("op4").getValue().toString());
-                attempans = Integer.parseInt(dataSnapshot.child("ans").getValue().toString());
+    if(btn_mode.getText().toString().equals("Test")) {
+        count++;
+        dr = FirebaseDatabase.getInstance().getReference("Questions").child(btn_language.getText().toString()).child(btn_level.getText().toString()).child(String.valueOf(count));
+        dr.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    ques.setText(dataSnapshot.child("ques").getValue().toString());
+                    r1.setText(dataSnapshot.child("op1").getValue().toString());
+                    r2.setText(dataSnapshot.child("op2").getValue().toString());
+                    r3.setText(dataSnapshot.child("op3").getValue().toString());
+                    r4.setText(dataSnapshot.child("op4").getValue().toString());
+                    attempans = Integer.parseInt(dataSnapshot.child("ans").getValue().toString());
+                }
             }
-        }
 
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        }
-    });
+            }
+        });
+    }
+    else
+    {
+        counprac++;
+        drprac= FirebaseDatabase.getInstance().getReference("Practice").child(btn_language.getText().toString()).child(btn_level.getText().toString()).child(String.valueOf(counprac));
+        drprac.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    ques.setText(dataSnapshot.child("ques").getValue().toString());
+                    r1.setText(dataSnapshot.child("op1").getValue().toString());
+                    r2.setText(dataSnapshot.child("op2").getValue().toString());
+                    r3.setText(dataSnapshot.child("op3").getValue().toString());
+                    r4.setText(dataSnapshot.child("op4").getValue().toString());
+                    attempans = Integer.parseInt(dataSnapshot.child("ans").getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
 }

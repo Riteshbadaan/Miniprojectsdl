@@ -34,7 +34,7 @@ public class Preferences extends optionmenu {
     Boolean c1,c2,c3,cpp1,cpp2,cpp3,java1,java2,java3;
     String currentu,currentp,currentn;
     int currents,currentcs,currentc1s,currentjavas;
-    long currentph;
+    String currentph;
     Boolean exit1=false;
 
     @Override
@@ -58,7 +58,7 @@ public class Preferences extends optionmenu {
                     currentu=dataSnapshot.child("mail").getValue().toString();
                     currentp=dataSnapshot.child("passwrd").getValue().toString();
                     currentn=dataSnapshot.child("name").getValue().toString();
-                    currentph=Long.parseLong(dataSnapshot.child("number").getValue().toString());
+                    currentph=dataSnapshot.child("number").getValue().toString();
                     currents=Integer.parseInt(dataSnapshot.child("score").getValue().toString());
                     currentcs=Integer.parseInt(dataSnapshot.child("cscore").getValue().toString());
                     currentc1s=Integer.parseInt(dataSnapshot.child("c1score").getValue().toString());
