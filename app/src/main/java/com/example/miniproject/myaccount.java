@@ -77,7 +77,7 @@ public class myaccount extends AppCompatActivity {
         }
         name.setText(u1.name);
         email.setText(u1.mail);
-        phone.setText(String.valueOf(u1.number));
+        phone.setText(u1.number);
         pass.setText(u1.passwrd);
 
         edit.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +97,7 @@ public class myaccount extends AppCompatActivity {
                     name.setFocusable(false);
                     phone.setFocusable(false);
                     databaseReference.child("name").setValue(name.getText().toString());
-                    databaseReference.child("number").setValue(Long.parseLong(phone.getText().toString()));
+                    databaseReference.child("number").setValue(phone.getText().toString());
                     flag = 1;
                 }
             }

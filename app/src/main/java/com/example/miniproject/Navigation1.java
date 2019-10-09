@@ -3,6 +3,7 @@ package com.example.miniproject;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -194,6 +195,14 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
                                     perscore += 10;
                                     sco.setText(String.valueOf(score));
                                     insert();
+//                                    if(attempans==1)
+//                                        r1.setBackgroundColor(Color.GREEN);
+//                                    else if(attempans==2)
+//                                        r2.setBackgroundColor(Color.GREEN);
+//                                    else if(attempans==3)
+//                                        r3.setBackgroundColor(Color.GREEN);
+//                                    else
+//                                        r4.setBackgroundColor(Color.GREEN);
                                     Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
                                     questioncome();
                                 } else {
@@ -259,10 +268,6 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
             }
         });
       //  Log.i("size",String.valueOf(count1));
-        r1.setChecked(false);
-        r2.setChecked(false);
-        r3.setChecked(false);
-        r4.setChecked(false);
     }
     @Override
     public void onBackPressed() {

@@ -9,22 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".status"></activity>
-        <activity android:name=".result" />
-        <activity android:name=".contactus" />
-        <activity android:name=".Leaderboard" />
-        <activity android:name=".myaccount" />
+        <activity android:name=".status"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".result"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".contactus"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Leaderboard"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".myaccount"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Navigation1"
             android:label="@string/title_activity_navigation1"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Preferences" />
-        <activity android:name=".QuestionPage" >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Preferences"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".QuestionPage"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
