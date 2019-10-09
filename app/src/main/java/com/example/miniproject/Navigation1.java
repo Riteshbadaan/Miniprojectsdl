@@ -3,8 +3,6 @@ package com.example.miniproject;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -115,6 +113,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         else
             time.setText("--/--");
 
+
         submit=findViewById(R.id.button);
         radioGroup=findViewById(R.id.radiogroup);
         ques=findViewById(R.id.questiontext);
@@ -179,6 +178,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.i("Count",String.valueOf(count));
                 if (radioGroup.getCheckedRadioButtonId() == -1) {
                     Toasty.warning(context, "You have to select an option", Toast.LENGTH_SHORT).show();
                 }
@@ -214,7 +214,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
                         } else {
                             if (answer == attempans) {
                                 Log.i("count", String.valueOf(count));
-                                if (count < 15) {
+                                if (counprac < 15) {
                                     score += 10;
                                     sco.setText(String.valueOf(score));
                                     Toasty.success(context, "Correct answer", Toast.LENGTH_SHORT).show();
@@ -228,7 +228,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
                                 }
                             } else {
                                 Toasty.error(context, "Wrong answer", Toast.LENGTH_SHORT).show();
-                                if (count < 15)
+                                if (counprac < 15)
                                     questioncome();
                                 else {
                                     finish();
@@ -259,6 +259,10 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
             }
         });
       //  Log.i("size",String.valueOf(count1));
+        r1.setChecked(false);
+        r2.setChecked(false);
+        r3.setChecked(false);
+        r4.setChecked(false);
     }
     @Override
     public void onBackPressed() {

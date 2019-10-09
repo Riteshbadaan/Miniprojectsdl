@@ -21,8 +21,6 @@ public class optionmenu extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
-        } else if (item.getItemId() == R.id.action_settings) {
-
         }
         return super.onOptionsItemSelected(item);
     }
