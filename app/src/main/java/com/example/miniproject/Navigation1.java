@@ -365,50 +365,78 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
     {
         if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Easy"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc+score,perc1,perjava,true,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
-            dr12.setValue(u1234);
+//            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc+score,perc1,perjava,true,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+//            dr12.setValue(u1234);
+            dr12.child("score").setValue(perscore);
+            dr12.child("cscore").setValue(perc+score);
+            dr12.child("t11").setValue(true);
         }
         else if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Medium"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc+score,perc1,perjava,currentc1,true,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
-            dr12.setValue(u1234);
+//            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc+score,perc1,perjava,currentc1,true,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+//            dr12.setValue(u1234);
+            dr12.child("score").setValue(perscore);
+            dr12.child("cscore").setValue(perc+score);
+            dr12.child("t12").setValue(true);
         }
         else if(btn_language.getText().toString().equals("C") && btn_level.getText().toString().equals("Hard"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc+score,perc1,perjava,currentc1,currentc2,true,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
-            dr12.setValue(u1234);
+//            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc+score,perc1,perjava,currentc1,currentc2,true,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+//            dr12.setValue(u1234);
+            dr12.child("score").setValue(perscore);
+            dr12.child("cscore").setValue(perc+score);
+            dr12.child("t13").setValue(true);
         }
         else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Easy"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1+score,perjava,currentc1,currentc2,currentc3,true,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
-            dr12.setValue(u1234);
+//            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1+score,perjava,currentc1,currentc2,currentc3,true,currentcpp2,currentcpp3,currentjava1,currentjava2,currentjava3);
+//            dr12.setValue(u1234);
+            dr12.child("score").setValue(perscore);
+            dr12.child("c1score").setValue(perc1+score);
+            dr12.child("t21").setValue(true);
         }
         else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Medium"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1+score,perjava,currentc1,currentc2,currentc3,currentcpp1,true,currentcpp3,currentjava1,currentjava2,currentjava3);
-            dr12.setValue(u1234);
+//            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1+score,perjava,currentc1,currentc2,currentc3,currentcpp1,true,currentcpp3,currentjava1,currentjava2,currentjava3);
+//            dr12.setValue(u1234);
+            dr12.child("score").setValue(perscore);
+            dr12.child("c1score").setValue(perc1+score);
+            dr12.child("t22").setValue(true);
         }
         else if(btn_language.getText().toString().equals("C++") && btn_level.getText().toString().equals("Hard"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1+score,perjava,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,true,currentjava1,currentjava2,currentjava3);
-            dr12.setValue(u1234);
+//            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1+score,perjava,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,true,currentjava1,currentjava2,currentjava3);
+//            dr12.setValue(u1234);
+            dr12.child("score").setValue(perscore);
+            dr12.child("c1score").setValue(perc1+score);
+            dr12.child("t23").setValue(true);
         }
         else if(btn_language.getText().toString().equals("Java") && btn_level.getText().toString().equals("Easy"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1,perjava+score,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,true,currentjava2,currentjava3);
-            dr12.setValue(u1234);
+//            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1,perjava+score,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,true,currentjava2,currentjava3);
+//            dr12.setValue(u1234);
+            dr12.child("score").setValue(perscore);
+            dr12.child("javascore").setValue(perjava+score);
+            dr12.child("t23").setValue(true);
         }
         else if(btn_language.getText().toString().equals("Java") && btn_level.getText().toString().equals("Medium"))
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1,perjava+score,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,true,currentjava3);
-            dr12.setValue(u1234);
+//            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1,perjava+score,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,true,currentjava3);
+//            dr12.setValue(u1234);
+            dr12.child("score").setValue(perscore);
+            dr12.child("javascore").setValue(perjava+score);
+            dr12.child("t23").setValue(true);
         }
         else
         {
-            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1,perjava+score,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,true);
-            dr12.setValue(u1234);
+//            user u1234=new user(currentu,currentp,currentn,currentph,perscore,perc,perc1,perjava+score,currentc1,currentc2,currentc3,currentcpp1,currentcpp2,currentcpp3,currentjava1,currentjava2,true);
+//            dr12.setValue(u1234);
+            dr12.child("score").setValue(perscore);
+            dr12.child("javascore").setValue(perjava+score);
+            dr12.child("t23").setValue(true);
         }
     }
+
 
     public  void cal()
     {

@@ -94,6 +94,31 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                change(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    public void change(int position)
+    {
+        if(position==1) {
+            ss.setChecked(true);
+        }
+        else if(position==0)
+            ss.setChecked(false);
     }
 
     @Override
