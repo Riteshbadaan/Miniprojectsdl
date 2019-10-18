@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        getSupportActionBar().setTitle("Register");
+        getSupportActionBar().setTitle("Register / Login");
         vp = findViewById(R.id.viewPager);
         ss = findViewById(R.id.switch1);
         viewPagerClass vp1 = new viewPagerClass(getSupportFragmentManager());
