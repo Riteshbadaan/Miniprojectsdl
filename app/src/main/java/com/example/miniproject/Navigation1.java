@@ -417,7 +417,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
 //            dr12.setValue(u1234);
             dr12.child("score").setValue(perscore);
             dr12.child("javascore").setValue(perjava+score);
-            dr12.child("t23").setValue(true);
+            dr12.child("t31").setValue(true);
         }
         else if(btn_language.getText().toString().equals("Java") && btn_level.getText().toString().equals("Medium"))
         {
@@ -425,7 +425,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
 //            dr12.setValue(u1234);
             dr12.child("score").setValue(perscore);
             dr12.child("javascore").setValue(perjava+score);
-            dr12.child("t23").setValue(true);
+            dr12.child("t32").setValue(true);
         }
         else
         {
@@ -433,7 +433,7 @@ public class Navigation1 extends optionmenu implements NavigationView.OnNavigati
 //            dr12.setValue(u1234);
             dr12.child("score").setValue(perscore);
             dr12.child("javascore").setValue(perjava+score);
-            dr12.child("t23").setValue(true);
+            dr12.child("t33").setValue(true);
         }
     }
 
